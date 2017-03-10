@@ -1,7 +1,10 @@
 <?php
 namespace BroadcastingTest\Action;
 
+use Broadcasting\Action\HomePageAction;
 use PHPUnit\Framework\TestCase;
+use Zend\Diactoros\ServerRequest;
+use Zend\Stratigility\Next;
 
 /**
  * Short description for class
@@ -15,8 +18,13 @@ use PHPUnit\Framework\TestCase;
  */
 class HomePageActionTest extends TestCase
 {
-    public function testAlwaysSuccessful(): void
+    public function testReturnsHtmlResponse(): void
     {
-        $this->assertTrue(true);
+        $homePageAction = new HomePageAction();
+        $response = $homePageAction->process(
+            new ServerRequest(),
+            new Next(new \SplQueue())
+        );
+        $this->assertInstanceOf('Zend\Diactoros\Response\HtmlResponse', $response, 'nix!');
     }
 }
