@@ -30,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Broadcasting\\": "src/Broadcasting/src/"
+            "Broadcasting\\": "src/Broadcasting/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BroadcastingTest\\": "test/BroadcastingTest/src/"
+            "BroadcastingTest\\": "test/BroadcastingTest/"
         }
     },
     "scripts": {

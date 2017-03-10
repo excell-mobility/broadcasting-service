@@ -22,6 +22,8 @@ return [
         'invokables' => [
             // Fully\Qualified\InterfaceName::class => Fully\Qualified\ClassName::class,
             Helper\ServerUrlHelper::class => Helper\ServerUrlHelper::class,
+
+            Broadcasting\Action\HomePageAction::class => Broadcasting\Action\HomePageAction::class
         ],
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories'  => [
