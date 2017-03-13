@@ -1,5 +1,6 @@
 <?php
 
+use Broadcasting\Api\ApiProblemHandler;
 use Zend\Expressive\Helper\ServerUrlMiddleware;
 use Zend\Expressive\Helper\UrlHelperMiddleware;
 use Zend\Expressive\Middleware\ImplicitHeadMiddleware;
@@ -13,6 +14,7 @@ use Zend\Stratigility\Middleware\ErrorHandler;
 
 // The error handler should be the first (most outer) middleware to catch
 // all Exceptions.
+//$app->pipe(ApiProblemHandler::class);
 $app->pipe(ErrorHandler::class);
 $app->pipe(ServerUrlMiddleware::class);
 

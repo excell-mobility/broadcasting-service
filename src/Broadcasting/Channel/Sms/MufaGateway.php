@@ -1,5 +1,5 @@
 <?php
-namespace Broadcasting\Api\v1\Messages;
+namespace Broadcasting\Channel\Sms;
 
 /**
  * Short description for class
@@ -11,11 +11,7 @@ namespace Broadcasting\Api\v1\Messages;
  * @copyright Copyright (c) 2017 ENTIRETEC (http://www.entiretec.com)
  * @license   ENTIRETEC proprietery license
  */
-class PostMessages
+class MufaGateway extends AbstractSmsGateway
 {
 
-    public function __invoke()
-    {
-        // TODO: Implement __invoke() method.
-    }
 }

@@ -36,6 +36,11 @@ return [
             Zend\Stratigility\Middleware\ErrorHandler::class => Container\ErrorHandlerFactory::class,
             Middleware\ErrorResponseGenerator::class         => Container\ErrorResponseGeneratorFactory::class,
             Middleware\NotFoundHandler::class                => Container\NotFoundHandlerFactory::class,
+
+            Zend\Log\Logger::class => Broadcasting\Factory\LoggerFactory::class,
+
+            Broadcasting\Channel\Sms\MufaGateway::class => Broadcasting\Factory\MufaGatewayFactory::class,
+            Broadcasting\Api\v1\Messages\PostMessage::class => Broadcasting\Factory\PostMessageFactory::class
         ],
     ],
 ];

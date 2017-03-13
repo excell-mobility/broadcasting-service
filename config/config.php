@@ -11,6 +11,7 @@ $cacheConfig = [
 ];
 
 $aggregator = new ConfigAggregator([
+    \Zend\Log\ConfigProvider::class,
     // Include cache configuration
     new ArrayProvider($cacheConfig),
     // Load application config in a pre-defined order in such a way that local settings

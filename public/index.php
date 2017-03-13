@@ -27,7 +27,22 @@ call_user_func(function () {
     // configuration statements
     require 'config/pipeline.php';
 
+
+    /**
+     * API v2
+     */
+
+    /**
+     * API v1
+     */
+    $app->post('/messages', Api\v1\Messages\PostMessage::class, 'api_v1_messages_post');
+
+    /**
+     * Websites
+     */
     $app->get('/', Action\HomePageAction::class, 'home');
+
+
 
     /**
      * Setup routes with a single request method:
