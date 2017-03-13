@@ -2,6 +2,7 @@
 namespace Broadcasting\Channel\Sms;
 
 use GuzzleHttp\ClientInterface;
+use LosMiddleware\ApiProblem\Model\ApiProblem;
 use Zend\Log\LoggerInterface;
 
 /**
@@ -106,4 +107,14 @@ abstract class AbstractSmsGateway
 
         return $phone;
     }
+
+    /**
+     * Sends the text message $content to $contactId.
+     *
+     * @param string $contactId
+     * @param string $content
+     * @throws \Exception
+     * @return void
+     */
+    abstract public function send(string $contactId, string $content): void;
 }

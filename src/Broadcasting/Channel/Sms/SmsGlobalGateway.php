@@ -13,5 +13,16 @@ namespace Broadcasting\Channel\Sms;
  */
 class SmsGlobalGateway extends AbstractSmsGateway
 {
+    /**
+     * Sends the message $content to $contactId.
+     *
+     * @param string $contactId
+     * @param string $content
+     * @throws \Exception
+     * @return void
+     */
+    public function send(string $contactId, string $content): void
+    {
 
+    }
 }

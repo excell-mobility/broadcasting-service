@@ -57,6 +57,7 @@ class PostMessage
     {
         $paramsDecoded = $this->validate($request);
         $chosenGateway = $this->chooseGateway($paramsDecoded->token);
+        $jo = $chosenGateway->send($paramsDecoded->contactId, $paramsDecoded->content);
     }
 
     /**
