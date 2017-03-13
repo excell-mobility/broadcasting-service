@@ -1,6 +1,7 @@
 <?php
 namespace Broadcasting\Api\v1\Messages;
 
+use Broadcasting\Api\Validation;
 use Broadcasting\Channel\Sms\AbstractSmsGateway;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -41,7 +42,7 @@ class PostMessage
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null): ResponseInterface
     {
-        throw new \Exception('jo', 400);
+        $paramsDecoded = $this->validate($request);
     }
 
     /**
@@ -65,5 +66,24 @@ class PostMessage
     public function chooseGateway(string $token): AbstractSmsGateway
     {
 
+    }
+
+    /**
+     * Do the validation and return the decoded JSON Object if successful.
+     *
+     * @param ServerRequestInterface $request
+     * @return \StdClass
+     */
+    public function validate(ServerRequestInterface $request)
+    {
+        $validation = new Validation($request);
+        $validation->validateContentTypeApplicationJson();
+        $decodedJson = $validation->validateContentIsValidJson();
+
+        // check API parameters
+        $validation->validateRequiredAttributes($decodedJson, ['channel', 'contactId', 'content', 'token']);
+        $validation->validateStringValues($decodedJson, ['channel', 'contactId', 'content', 'token']);
+
+        return $decodedJson;
     }
 }
