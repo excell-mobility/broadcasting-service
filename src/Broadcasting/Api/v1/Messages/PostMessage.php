@@ -2,8 +2,6 @@
 namespace Broadcasting\Api\v1\Messages;
 
 use Broadcasting\Channel\Sms\AbstractSmsGateway;
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -17,7 +15,7 @@ use Psr\Http\Message\ServerRequestInterface;
  * @copyright Copyright (c) 2017 ENTIRETEC (http://www.entiretec.com)
  * @license   ENTIRETEC proprietery license
  */
-class PostMessage implements MiddlewareInterface
+class PostMessage
 {
 
     /**
@@ -37,13 +35,13 @@ class PostMessage implements MiddlewareInterface
      * Sends a message content to the contact id using the given channel. The token decides which provider to use.
      *
      * @param ServerRequestInterface $request
-     * @param DelegateInterface $delegate
+     * @param ResponseInterface $response
+     * @param callable $next
      * @return ResponseInterface
      */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null): ResponseInterface
     {
-
-        throw new \Exception('jo');
+        throw new \Exception('jo', 400);
     }
 
     /**

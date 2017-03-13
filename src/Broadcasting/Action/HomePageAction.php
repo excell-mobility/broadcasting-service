@@ -1,7 +1,5 @@
 <?php
 namespace Broadcasting\Action;
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
@@ -16,7 +14,7 @@ use Zend\Diactoros\Response\HtmlResponse;
  * @copyright Copyright (c) 2017 ENTIRETEC (http://www.entiretec.com)
  * @license   ENTIRETEC proprietery license
  */
-class HomePageAction implements MiddlewareInterface
+class HomePageAction
 {
 
     /**
@@ -24,11 +22,11 @@ class HomePageAction implements MiddlewareInterface
      * to the next middleware component to create the response.
      *
      * @param ServerRequestInterface $request
-     * @param DelegateInterface $delegate
-     *
+     * @param ResponseInterface $response
+     * @param callable $next
      * @return ResponseInterface
      */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate): ResponseInterface
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null): ResponseInterface
     {
         $query = $request->getQueryParams();
         $target = $query['target'] ?? 'World';
