@@ -2,7 +2,7 @@
 return [
     'dependencies' => [
         'invokables' => [
-            \Broadcasting\Api\ApiProblem::class => \Broadcasting\Api\ApiProblem::class,
+            LosMiddleware\ApiProblem\ApiProblem::class => LosMiddleware\ApiProblem\ApiProblem::class,
         ],
         'factories' => [
         ],
@@ -10,7 +10,7 @@ return [
     'middleware_pipeline' => [
         'error' => [
             'middleware' => [
-                Broadcasting\Api\ApiProblem::class,
+                LosMiddleware\ApiProblem\ApiProblem::class,
             ],
             'error' => true,
             'priority' => -10000
@@ -27,4 +27,3 @@ return [
         'full' => true,
     ]
 ];
-

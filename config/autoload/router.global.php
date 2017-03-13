@@ -6,7 +6,7 @@ use Zend\Expressive\Router\RouterInterface;
 return [
     'dependencies' => [
         'invokables' => [
-            RouterInterface::class => FastRouteRouter::class,
+            Zend\Expressive\Router\RouterInterface::class => Zend\Expressive\Router\FastRouteRouter::class,
         ],
     ],
 ];
