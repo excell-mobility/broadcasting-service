@@ -31,6 +31,7 @@ class MufaGatewayFactory implements FactoryInterface
     {
         $mufaGateway = new MufaGateway();
         $mufaGateway->setClient(new Client());
+        $mufaGateway->setConfig($container->get('config')['channel']['sms']['MufaGateway']);
         $mufaGateway->setLogger($container->get('Zend\Log\Logger'));
 
         return $mufaGateway;

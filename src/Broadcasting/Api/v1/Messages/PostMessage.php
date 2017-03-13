@@ -43,18 +43,7 @@ class PostMessage
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null): ResponseInterface
     {
         $paramsDecoded = $this->validate($request);
-    }
-
-    /**
-     * Validates the request. If the request is invalid, an appropriate exception is thrown that leads
-     *
-     * @param ServerRequestInterface $request
-     * @throws \Exception
-     * @return void
-     */
-    public function validateRequest(ServerRequestInterface $request): void
-    {
-
+        $chosenGateway = $this->chooseGateway($paramsDecoded->token);
     }
 
     /**
@@ -65,7 +54,10 @@ class PostMessage
      */
     public function chooseGateway(string $token): AbstractSmsGateway
     {
-
+        // check free sms provider first
+        if ($this->mufaGateway->validateToken($token)) {
+            return $this->mufaGateway;
+        }
     }
 
     /**
@@ -74,7 +66,7 @@ class PostMessage
      * @param ServerRequestInterface $request
      * @return \StdClass
      */
-    public function validate(ServerRequestInterface $request)
+    public function validate(ServerRequestInterface $request): \StdClass
     {
         $validation = new Validation($request);
         $validation->validateContentTypeApplicationJson();

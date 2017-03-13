@@ -24,6 +24,12 @@ abstract class AbstractSmsGateway
     protected $client;
 
     /**
+     * Stores the config.
+     * @var array
+     */
+    protected $config;
+
+    /**
      * Stores the logger.
      * @var LoggerInterface
      */
@@ -42,6 +48,18 @@ abstract class AbstractSmsGateway
     }
 
     /**
+     * Sets the config.
+     *
+     * @param array $config
+     * @return AbstractSmsGateway
+     */
+    public function setConfig(array $config): AbstractSmsGateway
+    {
+        $this->config = $config;
+        return $this;
+    }
+
+    /**
      * Sets the logger.
      *
      * @param LoggerInterface $logger
@@ -53,6 +71,20 @@ abstract class AbstractSmsGateway
         return $this;
     }
 
+    /**
+     * Validates the given token. True if successful, else false.
+     *
+     * @param string $token
+     * @return bool
+     */
+    public function validateToken(string $token): bool
+    {
+        if ($this->config['token'] === $token) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /**
      * Removes the leading "+" and replaces leading zero with given country prefix.

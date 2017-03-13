@@ -12,7 +12,7 @@ return [
         'sms' => [
 
             // SMS gateway "SMSGlobal" (premium)
-            'SMSGlobal' => [
+            'SmsGlobalGateway' => [
                 'name' => 'SMSGlobal',
                 'premium' => true,
                 'token' => '<insert your token here>',
@@ -22,7 +22,7 @@ return [
             ],
 
             // SMS gateway "mufa" (free)
-            'mufa' => [
+            'MufaGateway' => [
                 'name' => 'mufa.de Free SMS',
                 'premium' => false,
                 'token' => '<insert your token here>',
