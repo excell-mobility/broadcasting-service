@@ -5,11 +5,14 @@ return [
             LosMiddleware\ApiProblem\ApiProblem::class => LosMiddleware\ApiProblem\ApiProblem::class,
         ],
         'factories' => [
+            LosMiddleware\LosLog\LosLog::class => LosMiddleware\LosLog\LosLogFactory::class,
+            LosMiddleware\LosLog\HttpLog::class => LosMiddleware\LosLog\HttpLogFactory::class,
         ],
     ],
     'middleware_pipeline' => [
         'error' => [
             'middleware' => [
+                LosMiddleware\LosLog\LosLog::class,
                 LosMiddleware\ApiProblem\ApiProblem::class,
             ],
             'error' => true,
