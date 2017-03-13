@@ -28,7 +28,6 @@ return [
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories'  => [
             Application::class                => Container\ApplicationFactory::class,
-            Delegate\NotFoundDelegate::class  => Container\NotFoundDelegateFactory::class,
             Helper\ServerUrlMiddleware::class => Helper\ServerUrlMiddlewareFactory::class,
             Helper\UrlHelper::class           => Helper\UrlHelperFactory::class,
             Helper\UrlHelperMiddleware::class => Helper\UrlHelperMiddlewareFactory::class,
@@ -40,6 +39,7 @@ return [
             Zend\Log\Logger::class => Broadcasting\Factory\LoggerFactory::class,
 
             Broadcasting\Channel\Sms\MufaGateway::class => Broadcasting\Factory\MufaGatewayFactory::class,
+            Broadcasting\Channel\Sms\SmsGlobalGateway::class => Broadcasting\Factory\SmsGlobalGatewayFactory::class,
             Broadcasting\Api\v1\Messages\PostMessage::class => Broadcasting\Factory\PostMessageFactory::class
         ],
     ],

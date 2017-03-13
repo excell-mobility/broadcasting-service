@@ -26,7 +26,8 @@ class PostMessageFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): PostMessage
     {
         $postMessage = new PostMessage(
-            $container->get('Broadcasting\Channel\Sms\MufaGateway')
+            $container->get('Broadcasting\Channel\Sms\MufaGateway'),
+            $container->get('Broadcasting\Channel\Sms\SmsGlobalGateway')
         );
 
         return $postMessage;

@@ -25,11 +25,24 @@ class PostMessage
      */
     protected $mufaGateway;
 
+    /**
+     * Stores the SmsGlobal gateway.
+     * @var AbstractSmsGateway
+     */
+    protected $smsGlobalGateway;
+
+    /**
+     * PostMessage constructor.
+     * @param AbstractSmsGateway $mufaGateway
+     * @param AbstractSmsGateway $smsGlobalGateway
+     */
     public function __construct(
-        AbstractSmsGateway $mufaGateway
+        AbstractSmsGateway $mufaGateway,
+        AbstractSmsGateway $smsGlobalGateway
     )
     {
         $this->mufaGateway = $mufaGateway;
+        $this->smsGlobalGateway = $smsGlobalGateway;
     }
 
     /**
@@ -57,6 +70,10 @@ class PostMessage
         // check free sms provider first
         if ($this->mufaGateway->validateToken($token)) {
             return $this->mufaGateway;
+        }
+
+        if ($this->smsGlobalGateway->validateToken($token)) {
+            return $this->smsGlobalGateway;
         }
     }
 
