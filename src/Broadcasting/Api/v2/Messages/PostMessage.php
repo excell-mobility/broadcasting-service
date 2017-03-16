@@ -71,7 +71,7 @@ class PostMessage
             $apiResponse = new ApiProblem(502, 'Bad Gateway: Could not send sms because SMS Gateway was not accessible.');
         }
 
-        $bufferStream->write(json_encode($apiResponse->toArray()));
+        $bufferStream->write(json_encode($apiResponse->toArray(), JSON_PRETTY_PRINT));
         return $response->withBody($bufferStream);
     }
 
