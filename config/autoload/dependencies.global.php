@@ -36,11 +36,12 @@ return [
             Middleware\ErrorResponseGenerator::class         => Container\ErrorResponseGeneratorFactory::class,
             Middleware\NotFoundHandler::class                => Container\NotFoundHandlerFactory::class,
 
-            Zend\Log\Logger::class => Broadcasting\Factory\LoggerFactory::class,
+            Zend\Log\Logger::class => Broadcasting\LoggerFactory::class,
 
-            Broadcasting\Channel\Sms\MufaGateway::class => Broadcasting\Factory\MufaGatewayFactory::class,
-            Broadcasting\Channel\Sms\SmsGlobalGateway::class => Broadcasting\Factory\SmsGlobalGatewayFactory::class,
-            Broadcasting\Api\v1\Messages\PostMessage::class => Broadcasting\Factory\PostMessageFactory::class
+            Broadcasting\Channel\Sms\MufaGateway::class => Broadcasting\Channel\Sms\MufaGatewayFactory::class,
+            Broadcasting\Channel\Sms\SmsGlobalGateway::class => Broadcasting\Channel\Sms\SmsGlobalGatewayFactory::class,
+            Broadcasting\Api\v1\Messages\PostMessage::class => Broadcasting\Api\v1\Messages\PostMessageFactory::class,
+            Broadcasting\Api\v2\Messages\PostMessage::class => Broadcasting\Api\v2\Messages\PostMessageFactory::class
         ],
     ],
 ];

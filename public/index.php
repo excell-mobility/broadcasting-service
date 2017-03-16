@@ -28,6 +28,7 @@ $app = $container->get(Application::class);
 /**
  * API v2
  */
+$app->post('/api/v2/messages', Api\v2\Messages\PostMessage::class, 'api_v2_messages_post');
 
 /**
  * API v1

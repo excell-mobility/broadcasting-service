@@ -1,6 +1,6 @@
 <?php
-namespace Broadcasting\Factory;
-use Broadcasting\Api\v1\Messages\PostMessage;
+namespace Broadcasting\Api\v1\Messages;
+
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 

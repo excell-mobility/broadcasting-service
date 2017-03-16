@@ -1,7 +1,6 @@
 <?php
-namespace Broadcasting\Factory;
+namespace Broadcasting\Channel\Sms;
 
-use Broadcasting\Channel\Sms\MufaGateway;
 use GuzzleHttp\Client;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -16,22 +15,22 @@ use Zend\ServiceManager\Factory\FactoryInterface;
  * @copyright Copyright (c) 2017 ENTIRETEC (http://www.entiretec.com)
  * @license   ENTIRETEC proprietery license
  */
-class MufaGatewayFactory implements FactoryInterface
+class SmsGlobalGatewayFactory implements FactoryInterface
 {
 
     /**
-     * Builds a MufaGateway
+     * Builds a SmsGlobalGateway.
      *
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null|null $options
-     * @return MufaGateway
+     * @return SmsGlobalGateway
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): MufaGateway
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): SmsGlobalGateway
     {
-        $mufaGateway = new MufaGateway();
+        $mufaGateway = new SmsGlobalGateway();
         $mufaGateway->setClient(new Client());
-        $mufaGateway->setConfig($container->get('config')['channel']['sms']['MufaGateway']);
+        $mufaGateway->setConfig($container->get('config')['channel']['sms']['SmsGlobalGateway']);
         $mufaGateway->setLogger($container->get('Zend\Log\Logger'));
 
         return $mufaGateway;

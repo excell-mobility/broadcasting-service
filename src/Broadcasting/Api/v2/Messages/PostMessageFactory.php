@@ -1,12 +1,8 @@
 <?php
-namespace Broadcasting\Factory;
+namespace Broadcasting\Api\v2\Messages;
 
 use Interop\Container\ContainerInterface;
-use Zend\Log\LoggerInterface;
-use Zend\Log\Logger;
-use Zend\Log\Writer\Stream;
 use Zend\ServiceManager\Factory\FactoryInterface;
-
 
 /**
  * Short description for class
@@ -18,23 +14,22 @@ use Zend\ServiceManager\Factory\FactoryInterface;
  * @copyright Copyright (c) 2017 ENTIRETEC (http://www.entiretec.com)
  * @license   ENTIRETEC proprietery license
  */
-class LoggerFactory implements FactoryInterface
+class PostMessageFactory implements FactoryInterface
 {
 
     /**
-     * Builds a Zend Log logger.
-     *
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null|null $options
-     * @return LoggerInterface
+     * @return mixed
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): LoggerInterface
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): PostMessage
     {
-        $writer = new Stream('./data/log/error_' . date('Y-m-d') . '.log');
-        $logger = new Logger();
-        $logger->addWriter($writer);
+        $postMessage = new PostMessage(
+            $container->get('Broadcasting\Channel\Sms\MufaGateway'),
+            $container->get('Broadcasting\Channel\Sms\SmsGlobalGateway')
+        );
 
-        return $logger;
+        return $postMessage;
     }
 }
