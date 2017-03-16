@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * Local configuration.
+ *
+ * Copy this file to `local.php` and change its settings as required.
+ * `local.php` is ignored by git and safe to use for local and sensitive data like usernames and passwords.
+ */
+
+return [
+    'channel' => [
+        'sms' => [
+
+            // SMS gateway "SMSGlobal" (premium)
+            'SmsGlobalGateway' => [
+                'name' => 'SMSGlobal',
+                'premium' => true,
+                'token' => '<insert your token here>',
+                'gateway' => Broadcasting\Channel\Sms\SmsGlobalGateway::class,
+                'user' => '<insert username here>',
+                'password' => '<insert password here>',
+                'sendingServiceName' => 'My SMS Service'
+            ],
+
+            // SMS gateway "mufa" (free)
+            'MufaGateway' => [
+                'name' => 'mufa.de Free SMS',
+                'premium' => false,
+                'token' => '<insert your token here>',
+                'gateway' => Broadcasting\Channel\Sms\MufaGateway::class
+            ]
+        ]
+    ]
+];
