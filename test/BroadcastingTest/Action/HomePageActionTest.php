@@ -2,9 +2,9 @@
 namespace BroadcastingTest\Action;
 
 use Broadcasting\Action\HomePageAction;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Zend\Diactoros\ServerRequest;
-use Zend\Stratigility\Next;
 
 /**
  * Short description for class
@@ -21,9 +21,9 @@ class HomePageActionTest extends TestCase
     public function testReturnsHtmlResponse(): void
     {
         $homePageAction = new HomePageAction();
-        $response = $homePageAction->process(
+        $response = $homePageAction(
             new ServerRequest(),
-            new Next(new \SplQueue())
+            new Response()
         );
         $this->assertInstanceOf('Zend\Diactoros\Response\HtmlResponse', $response, 'nix!');
     }
