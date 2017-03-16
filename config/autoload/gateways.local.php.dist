@@ -18,7 +18,8 @@ return [
                 'token' => '<insert your token here>',
                 'gateway' => Broadcasting\Channel\Sms\SmsGlobalGateway::class,
                 'user' => '<insert username here>',
-                'password' => '<insert password here>'
+                'password' => '<insert password here>',
+                'sendingServiceName' => 'My SMS Service'
             ],
 
             // SMS gateway "mufa" (free)

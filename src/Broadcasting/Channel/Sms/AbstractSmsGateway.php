@@ -2,7 +2,7 @@
 namespace Broadcasting\Channel\Sms;
 
 use GuzzleHttp\ClientInterface;
-use LosMiddleware\ApiProblem\Model\ApiProblem;
+use Psr\Http\Message\ResponseInterface;
 use Zend\Log\LoggerInterface;
 
 /**
@@ -80,11 +80,7 @@ abstract class AbstractSmsGateway
      */
     public function validateToken(string $token): bool
     {
-        if ($this->config['token'] === $token) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($this->config['token'] === $token);
     }
 
     /**
@@ -114,7 +110,7 @@ abstract class AbstractSmsGateway
      * @param string $contactId
      * @param string $content
      * @throws \Exception
-     * @return void
+     * @return ResponseInterface
      */
-    abstract public function send(string $contactId, string $content): void;
+    abstract public function send(string $contactId, string $content): ResponseInterface;
 }

@@ -3,6 +3,8 @@ namespace Broadcasting\Api\v1\Messages;
 
 use Broadcasting\Api\Validation;
 use Broadcasting\Channel\Sms\AbstractSmsGateway;
+use GuzzleHttp\Psr7\BufferStream;
+use LosMiddleware\ApiProblem\Model\ApiProblem;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -57,7 +59,20 @@ class PostMessage
     {
         $paramsDecoded = $this->validate($request);
         $chosenGateway = $this->chooseGateway($paramsDecoded->token);
-        $jo = $chosenGateway->send($paramsDecoded->contactId, $paramsDecoded->content);
+        $bufferStream = new BufferStream();
+
+        try {
+            $chosenGateway->send($paramsDecoded->contactId, $paramsDecoded->content);
+            $apiResponse = new ApiProblem(201, 'Created: Successful sent to sms provider!' , null, 'success');
+            $response = $response->withStatus(201);
+
+        } catch (\Exception $e) {
+            $response = $response->withStatus(502);
+            $apiResponse = new ApiProblem(502, 'Bad Gateway: Could not send sms because SMS Gateway was not accessible.');
+        }
+
+        $bufferStream->write(json_encode($apiResponse->toArray()));
+        return $response->withBody($bufferStream);
     }
 
     /**
