@@ -1,6 +1,9 @@
 <?php
 namespace Broadcasting\Api;
 
+use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\Signer\Key;
+use Lcobucci\JWT\Signer\Rsa\Sha512;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -16,6 +19,12 @@ use Psr\Http\Message\ServerRequestInterface;
 class Validation
 {
     /**
+     * Stores the config.
+     * @var array
+     */
+    protected $config;
+
+    /**
      * Stores the Http request.
      * @var ServerRequestInterface $request
      */
@@ -24,10 +33,56 @@ class Validation
     /**
      * Validation constructor.
      * @param ServerRequestInterface $request
+     * @param $config
      */
-    public function __construct(ServerRequestInterface $request)
+    public function __construct(ServerRequestInterface $request, $config)
     {
         $this->request = $request;
+        $this->config = $config;
+    }
+
+    /**
+     *  Checks the HTTP "Authorization" header for a valid JSON web token.
+     *
+     * @throws \Exception
+     */
+    public function validateJwtAuthorizationHeader()
+    {
+        $authHeader = $this->request->getHeaderLine('Authorization');
+
+        // check for HTTP "Authorization" header
+        if (empty($authHeader) || ('JWT' !== substr($authHeader, 0, 3))) {
+            throw new \Exception('Authorization via JSON web token is mandatory.', 401);
+        }
+
+        // parse token string
+        $tokenString = substr($authHeader, 4);
+        try {
+            $jwt = (new Parser())->parse($tokenString);
+        } catch (\Exception $e) {
+            throw new \Exception('Error while parsing JSON web token', 400);
+        }
+
+        // verify signature before using the values
+        $verified = $jwt->verify(new Sha512(), new Key($this->config['jwt']['public_key_file']));
+        if (!$verified) {
+            throw new \Exception('Could not verify the token signature using the ExCELL Intermediate CA certificate!', 400);
+        }
+
+        // validate token content
+        if ($this->config['jwt']['expire'] && $jwt->isExpired(new \DateTime())) {
+            throw new \Exception('Your authorization token has expired.', 407);
+        };
+
+        // only allow tokens from ExCELL integration layer
+        if (!$jwt->hasClaim('iss') || ($jwt->getClaim('iss') !== $this->config['jwt']['issuer'])) {
+            throw new \Exception('The token\'s issuer has to be the ExCELL Integration Layer (' . $this->config['jwt']['issuer'] . ')', 400);
+        }
+
+        // the targeted service has to be the broadcasting service
+        if (!$jwt->hasClaim('service') || ($jwt->getClaim('service') !== $this->request->getUri()->getHost())) {
+            throw new \Exception('The token\'s service has to be the ExCELL Broadcasting Service (' . $this->request->getUri()->getHost() . ')', 400);
+        }
     }
 
     /**

@@ -27,7 +27,8 @@ class PostMessageFactory implements FactoryInterface
     {
         $postMessage = new PostMessage(
             $container->get('Broadcasting\Channel\Sms\MufaGateway'),
-            $container->get('Broadcasting\Channel\Sms\SmsGlobalGateway')
+            $container->get('Broadcasting\Channel\Sms\SmsGlobalGateway'),
+            $container->get('config')
         );
 
         return $postMessage;

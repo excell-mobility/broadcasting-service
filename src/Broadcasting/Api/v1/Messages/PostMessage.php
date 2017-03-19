@@ -20,6 +20,11 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class PostMessage
 {
+    /**
+     * Stores the config.
+     * @var
+     */
+    protected $config;
 
     /**
      * Stores the Mufa gateway.
@@ -37,14 +42,17 @@ class PostMessage
      * PostMessage constructor.
      * @param AbstractSmsGateway $mufaGateway
      * @param AbstractSmsGateway $smsGlobalGateway
+     * @param $config
      */
     public function __construct(
         AbstractSmsGateway $mufaGateway,
-        AbstractSmsGateway $smsGlobalGateway
+        AbstractSmsGateway $smsGlobalGateway,
+        $config
     )
     {
         $this->mufaGateway = $mufaGateway;
         $this->smsGlobalGateway = $smsGlobalGateway;
+        $this->config = $config;
     }
 
     /**
@@ -101,7 +109,7 @@ class PostMessage
      */
     public function validate(ServerRequestInterface $request): \StdClass
     {
-        $validation = new Validation($request);
+        $validation = new Validation($request, $this->config);
         $validation->validateContentTypeApplicationJson();
         $decodedJson = $validation->validateContentIsValidJson();
 

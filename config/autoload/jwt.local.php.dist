@@ -1,0 +1,10 @@
+<?php
+
+return [
+    'jwt' => [
+        'expire' => false,
+        'issuer' => 'subdomain.issuing-host.tld',
+        'verify' => true,
+        'public_key_file' => 'file:///path/to/intermediate.ca.certificate.crt'
+    ]
+];
