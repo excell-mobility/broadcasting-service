@@ -5,7 +5,6 @@ info:
   version: 'v1'
   contact:
     name: André Rademacher
-    email: andre.rademacher@entiretec.com
     url: http://www.entiretec.com
   description: 'The ExCELL broadcasting service'
 
