@@ -38,9 +38,14 @@ return [
 
             Zend\Log\Logger::class => Broadcasting\LoggerFactory::class,
 
+            // API general
             Broadcasting\Channel\Sms\MufaGateway::class => Broadcasting\Channel\Sms\MufaGatewayFactory::class,
             Broadcasting\Channel\Sms\SmsGlobalGateway::class => Broadcasting\Channel\Sms\SmsGlobalGatewayFactory::class,
+
+            // v1
             Broadcasting\Api\v1\Messages\PostMessage::class => Broadcasting\Api\v1\Messages\PostMessageFactory::class,
+
+            // v2
             Broadcasting\Api\v2\Messages\PostMessage::class => Broadcasting\Api\v2\Messages\PostMessageFactory::class
         ],
     ],
