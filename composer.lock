@@ -202,16 +202,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855"
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/0d6c7ca039329247e4f0f8f8f6506810e8248855",
-                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
                 "shasum": ""
             },
             "require": {
@@ -263,7 +263,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-02-27T10:51:17+00:00"
+            "time": "2017-03-20T17:10:46+00:00"
         },
         {
             "name": "http-interop/http-middleware",
@@ -423,29 +423,28 @@
         },
         {
             "name": "los/loslog",
-            "version": "2.0.3",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Lansoweb/LosLog.git",
-                "reference": "4adec4cbe93b20d36c134f5cd6ce481cbe915d85"
+                "reference": "2443925b830e9df3115a5816ff8a325822683cf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Lansoweb/LosLog/zipball/4adec4cbe93b20d36c134f5cd6ce481cbe915d85",
-                "reference": "4adec4cbe93b20d36c134f5cd6ce481cbe915d85",
+                "url": "https://api.github.com/repos/Lansoweb/LosLog/zipball/2443925b830e9df3115a5816ff8a325822683cf1",
+                "reference": "2443925b830e9df3115a5816ff8a325822683cf1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0",
+                "php": "^5.6 || ^7.0 || ^7.1",
                 "psr/log": "~1.0",
-                "zendframework/zend-diactoros": "~1.1",
-                "zendframework/zend-log": "~2.6",
-                "zendframework/zend-stratigility": "~1.1"
+                "zendframework/zend-diactoros": "^1.1",
+                "zendframework/zend-log": "^2.6",
+                "zendframework/zend-stratigility": "^1.1 || ^2.0"
             },
             "require-dev": {
-                "mikey179/vfsstream": "~1.6",
-                "phpunit/phpunit": "~4.8",
-                "rollbar/rollbar": "~0",
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^5.0 || ^6.0",
                 "satooshi/php-coveralls": "dev-master"
             },
             "suggest": {
@@ -482,7 +481,7 @@
                 "module",
                 "zf2"
             ],
-            "time": "2016-11-22T18:06:15+00:00"
+            "time": "2017-04-04T14:49:47+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -1436,29 +1435,29 @@
         },
         {
             "name": "zendframework/zend-view",
-            "version": "2.8.1",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-view.git",
-                "reference": "71b4ebd0c4c9a2d0e0438f9d3a435e08dd769ff8"
+                "reference": "3b6342c381c4437a03fc81d0064c0bb8924914d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-view/zipball/71b4ebd0c4c9a2d0e0438f9d3a435e08dd769ff8",
-                "reference": "71b4ebd0c4c9a2d0e0438f9d3a435e08dd769ff8",
+                "url": "https://api.github.com/repos/zendframework/zend-view/zipball/3b6342c381c4437a03fc81d0064c0bb8924914d3",
+                "reference": "3b6342c381c4437a03fc81d0064c0bb8924914d3",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5 || ^7.0",
+                "php": "^5.6 || ^7.0",
                 "zendframework/zend-eventmanager": "^2.6.2 || ^3.0",
                 "zendframework/zend-loader": "^2.5",
                 "zendframework/zend-stdlib": "^2.7 || ^3.0"
             },
             "require-dev": {
-                "fabpot/php-cs-fixer": "1.7.*",
-                "phpunit/phpunit": "^4.5",
+                "phpunit/phpunit": "^5.7.15 || ^6.0.8",
                 "zendframework/zend-authentication": "^2.5",
                 "zendframework/zend-cache": "^2.6.1",
+                "zendframework/zend-coding-standard": "~1.0.0",
                 "zendframework/zend-config": "^2.6",
                 "zendframework/zend-console": "^2.6",
                 "zendframework/zend-escaper": "^2.5",
@@ -1500,8 +1499,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev",
-                    "dev-develop": "2.9-dev"
+                    "dev-master": "2.9-dev",
+                    "dev-develop": "3.0-dev"
                 }
             },
             "autoload": {
@@ -1519,7 +1518,7 @@
                 "view",
                 "zf2"
             ],
-            "time": "2016-06-30T22:28:07+00:00"
+            "time": "2017-03-21T15:05:56+00:00"
         }
     ],
     "packages-dev": [
@@ -1891,16 +1890,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "5.0.3",
+            "version": "5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "4e99e1c4f9b05cbf4d6e84b100b3ff4107cf8cd1"
+                "reference": "37bbf491e6b585267ef1e0cbb0056f5c00ebf91c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/4e99e1c4f9b05cbf4d6e84b100b3ff4107cf8cd1",
-                "reference": "4e99e1c4f9b05cbf4d6e84b100b3ff4107cf8cd1",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/37bbf491e6b585267ef1e0cbb0056f5c00ebf91c",
+                "reference": "37bbf491e6b585267ef1e0cbb0056f5c00ebf91c",
                 "shasum": ""
             },
             "require": {
@@ -1950,7 +1949,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-06T14:22:16+00:00"
+            "time": "2017-04-02T07:46:32+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2140,16 +2139,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.0.9",
+            "version": "6.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "9bd36d990884d8fb3313232e0002ed4cdf79f428"
+                "reference": "df38633f62b45fbb9612275274b4553c34a863b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9bd36d990884d8fb3313232e0002ed4cdf79f428",
-                "reference": "9bd36d990884d8fb3313232e0002ed4cdf79f428",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/df38633f62b45fbb9612275274b4553c34a863b2",
+                "reference": "df38633f62b45fbb9612275274b4553c34a863b2",
                 "shasum": ""
             },
             "require": {
@@ -2218,7 +2217,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-15T13:04:13+00:00"
+            "time": "2017-04-03T02:25:33+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2492,16 +2491,16 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "b82d077cb3459e393abcf4867ae8f7230dcb51f6"
+                "reference": "234199f4528de6d12aaa58b612e98f7d36adb937"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/b82d077cb3459e393abcf4867ae8f7230dcb51f6",
-                "reference": "b82d077cb3459e393abcf4867ae8f7230dcb51f6",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/234199f4528de6d12aaa58b612e98f7d36adb937",
+                "reference": "234199f4528de6d12aaa58b612e98f7d36adb937",
                 "shasum": ""
             },
             "require": {
@@ -2515,7 +2514,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "3.1.x-dev"
                 }
             },
             "autoload": {
@@ -2555,7 +2554,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2017-03-03T06:25:06+00:00"
+            "time": "2017-04-03T13:19:02+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -2657,16 +2656,16 @@
         },
         {
             "name": "sebastian/object-reflector",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/object-reflector.git",
-                "reference": "afd5797e7af7c9f529879ad5e8e8abe126c89dab"
+                "reference": "773f97c67f28de00d397be301821b06708fca0be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/afd5797e7af7c9f529879ad5e8e8abe126c89dab",
-                "reference": "afd5797e7af7c9f529879ad5e8e8abe126c89dab",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/773f97c67f28de00d397be301821b06708fca0be",
+                "reference": "773f97c67f28de00d397be301821b06708fca0be",
                 "shasum": ""
             },
             "require": {
@@ -2698,7 +2697,7 @@
             ],
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
-            "time": "2017-03-16T14:05:21+00:00"
+            "time": "2017-03-29T09:07:27+00:00"
         },
         {
             "name": "sebastian/recursion-context",
