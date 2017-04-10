@@ -5,6 +5,6 @@ return [
         'expire' => false,
         'issuer' => 'subdomain.issuing-host.tld',
         'verify' => true,
-        'public_key_file' => 'file:///path/to/intermediate.ca.certificate.crt'
+        'il_public_key_file' => 'file:///path/to/il.excell-mobility.de.crt'
     ]
 ];

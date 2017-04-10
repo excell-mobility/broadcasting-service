@@ -62,7 +62,7 @@ class Validation
         }
 
         // verify signature before using the values
-        $verified = $jwt->verify(new Sha512(), new Key($this->config['jwt']['public_key_file']));
+        $verified = $jwt->verify(new Sha512(), new Key($this->config['jwt']['il_public_key_file']));
         if (!$verified) {
             throw new \Exception('Could not verify the token signature using the ExCELL Intermediate CA certificate!', 400);
         }
