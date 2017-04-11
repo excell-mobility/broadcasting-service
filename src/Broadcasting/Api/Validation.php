@@ -106,8 +106,12 @@ class Validation
     {
         $content = $this->request->getBody();
         $decodedBody = json_decode($content);
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        if (json_last_error() !== JSON_ERROR_NONE ) {
             throw new \Exception('The given JSON is invalid: ' . json_last_error_msg(), 400);
+        }
+
+        if (!($decodedBody instanceof \StdClass)) {
+            throw new \Exception('The given JSON is not an object.', 400);
         }
 
         return $decodedBody;
